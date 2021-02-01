@@ -12,6 +12,8 @@ from src.types.sub_epoch_summary import SubEpochSummary
 from src.types.vdf import VDFInfo, VDFProof
 from src.util.cbor_message import cbor_message
 from src.util.ints import uint8, uint64, uint128
+from src.types.classgroup import ClassgroupElement
+
 
 """
 Protocol between timelord and full node.
@@ -71,3 +73,17 @@ class NewSignagePointVDF:
 @cbor_message
 class NewEndOfSubSlotVDF:
     end_of_sub_slot_bundle: EndOfSubSlotBundle
+
+
+@dataclass(frozen=True)
+@cbor_message
+class NewProofOfTime:
+    new_proof_of_time: VDFInfo
+    initial_form: ClassgroupElement
+
+
+@dataclass(frozen=True)
+@cbor_message
+class RespondCompactProofOfTime:
+    vdf_info: VDFInfo
+    vdf_proof: VDFProof
