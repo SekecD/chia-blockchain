@@ -163,8 +163,14 @@ class RequestMempoolTransactions:
 
 @dataclass(frozen=True)
 @cbor_message
+class NewCompactVDF:
+    header_hash: bytes32
+
+
+@dataclass(frozen=True)
+@cbor_message
 class RequestCompactVDFs:
-    sub_height: uint32
+    header_hash: bytes32
 
 
 @dataclass(frozen=True)
